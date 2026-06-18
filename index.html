@@ -124,32 +124,32 @@
             max-width: 600px;
         }
 
-        /* Контейнер для нижнего ряда кнопок (кнопки действия + статистика слева) */
+        /* Нижний ряд: Кнопки Скачать/Source СЛЕВА, Статистика СПРАВА */
         .project-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 16px;
-            margin-top: auto; /* Прижимает к низу карточки */
+            margin-top: auto;
         }
 
-        /* Статистика теперь стоит слева внизу */
+        /* Кнопки Скачать/Source теперь СЛЕВА */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            order: 1;
+        }
+
+        /* Статистика теперь СПРАВА */
         .project-stats {
             display: flex;
             align-items: center;
             gap: 8px;
-            order: 1; /* Оставляет статистику слева */
+            order: 2;
         }
 
-        /* Кнопки Скачать/Source стоят справа */
-        .btn-group {
-            display: flex;
-            gap: 12px;
-            order: 2; /* Смещает основные кнопки вправо */
-        }
-
-        /* Полностью кастомные плашки строго одинакового размера */
+        /* Стили для плашки скачиваний */
         .stat-badge {
             display: inline-flex;
             align-items: center;
@@ -157,32 +157,65 @@
             gap: 8px;
             background-color: var(--btn-bg);
             border: 1px solid var(--border-color);
-            height: 38px; /* Фиксированная высота */
-            width: 75px;  /* Фиксированная ширина для идеального равенства */
+            height: 38px;
+            width: 75px; 
             border-radius: 6px;
-            color: #ffffff !important; /* Текст строго белый */
+            color: #ffffff !important;
             font-size: 0.9rem;
             font-weight: 500;
             user-select: none;
         }
 
-        /* Интерактивная кнопка лайка */
-        .stat-badge.like-btn {
-            cursor: pointer;
-            transition: background-color 0.2s ease, border-color 0.2s ease;
-        }
-
-        .stat-badge.like-btn:hover {
-            background-color: var(--btn-hover);
-            border-color: #44444a;
-        }
-
-        /* Делаем иконки белыми с помощью CSS фильтра */
+        /* Делаем нашу иконку скачиваний белой */
         .stat-badge img {
             width: 16px;
             height: 16px;
             display: block;
-            filter: brightness(0) invert(1); /* Превращает любую иконку в белую */
+            filter: brightness(0) invert(1);
+        }
+
+        /* ЖЕСТКИЙ СБРОС И ПЕРЕКРАСКА КНОПКИ LYKET ПОД НАШ ДИЗАЙН */
+        [data-lyket-type="like"] {
+            display: inline-block !important;
+        }
+
+        /* Сама кнопка-контейнер от Lyket */
+        [data-lyket-type="like"] button {
+            background-color: var(--btn-bg) !important;
+            border: 1px solid var(--border-color) !important;
+            height: 38px !important;
+            width: 75px !important;
+            border-radius: 6px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            cursor: pointer !important;
+            transition: background-color 0.2s ease, border-color 0.2s ease !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+        }
+
+        [data-lyket-type="like"] button:hover {
+            background-color: var(--btn-hover) !important;
+            border-color: #44444a !important;
+        }
+
+        /* Текст счетчика лайков внутри кнопки Lyket */
+        [data-lyket-type="like"] button span {
+            color: #ffffff !important; /* Строго белый текст */
+            font-family: 'Satoshi', sans-serif !important;
+            font-size: 0.9rem !important;
+            font-weight: 500 !important;
+        }
+
+        /* Встроенная иконка Lyket (делаем её полностью белой) */
+        [data-lyket-type="like"] button svg {
+            width: 16px !important;
+            height: 16px !important;
+            fill: #ffffff !important; /* Красим их дефолтное сердечко в белый */
+            color: #ffffff !important;
+            filter: brightness(0) invert(1) !important;
         }
 
         .btn {
@@ -229,7 +262,6 @@
     <div class="container">
         <div class="project-list">
 
-            <!-- AutoTyper -->
             <div class="project-card">
                 <div class="project-header">
                     <div class="project-name">AutoTyper</div>
@@ -238,24 +270,20 @@
                     Утилита для автоматизации ввода текста в поле ввода.
                 </div>
                 <div class="project-footer">
+                    <div class="btn-group">
+                        <a href="programs/AutoTyper.exe" class="btn" download>Скачать</a>
+                        <a href="https://github.com/finchproffe/Auto-Typer-Python" class="btn" target="_blank">Source</a>
+                    </div>
                     <div class="project-stats">
                         <div class="stat-badge" title="Скачивания">
                             <img src="assets/download.svg" alt="Download">
                             <span id="count-auto-typer-python">0</span>
                         </div>
-                        <div class="stat-badge like-btn" data-id="autotyper" title="Поставить лайк">
-                            <img src="assets/like.svg" alt="Like">
-                            <span id="like-count-autotyper">0</span>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <a href="programs/AutoTyper.exe" class="btn" download>Скачать</a>
-                        <a href="https://github.com/finchproffe/Auto-Typer-Python" class="btn" target="_blank">Source</a>
+                        <div data-lyket-type="like" data-lyket-id="autotyper" data-lyket-namespace="finch-releases"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- FinchScaler -->
             <div class="project-card">
                 <div class="project-header">
                     <div class="project-name">FinchScaler</div>
@@ -264,24 +292,20 @@
                     Инструмент для апскейлинга изображений в стиле anime.
                 </div>
                 <div class="project-footer">
+                    <div class="btn-group">
+                        <a href="https://github.com/finchproffe/FinchScaler/releases/download/v1.0/FinchScaler.exe" class="btn" download>Скачать</a>
+                        <a href="https://github.com/finchproffe/FinchScaler" class="btn" target="_blank">Source</a>
+                    </div>
                     <div class="project-stats">
                         <div class="stat-badge" title="Скачивания">
                             <img src="assets/download.svg" alt="Download">
                             <span id="count-finchscaler">0</span>
                         </div>
-                        <div class="stat-badge like-btn" data-id="finchscaler" title="Поставить лайк">
-                            <img src="assets/like.svg" alt="Like">
-                            <span id="like-count-finchscaler">0</span>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <a href="https://github.com/finchproffe/FinchScaler/releases/download/v1.0/FinchScaler.exe" class="btn" download>Скачать</a>
-                        <a href="https://github.com/finchproffe/FinchScaler" class="btn" target="_blank">Source</a>
+                        <div data-lyket-type="like" data-lyket-id="finchscaler" data-lyket-namespace="finch-releases"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Zodi IDE -->
             <div class="project-card">
                 <div class="project-header">
                     <div class="project-name">Zodi IDE</div>
@@ -290,24 +314,20 @@
                     Кастомная легкая IDE для разработки python-приложений со встроенным отладчиком и компилятором.
                 </div>
                 <div class="project-footer">
+                    <div class="btn-group">
+                        <a href="https://github.com/finchproffe/ZodiIDE/releases/download/v1.0/ZodiIDE.exe" class="btn" download>Скачать</a>
+                        <a href="https://github.com/finchproffe/ZodiIDE" class="btn" target="_blank">Source</a>
+                    </div>
                     <div class="project-stats">
                         <div class="stat-badge" title="Скачивания">
                             <img src="assets/download.svg" alt="Download">
                             <span id="count-zodiide">0</span>
                         </div>
-                        <div class="stat-badge like-btn" data-id="zodiide" title="Поставить лайк">
-                            <img src="assets/like.svg" alt="Like">
-                            <span id="like-count-zodiide">0</span>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <a href="https://github.com/finchproffe/ZodiIDE/releases/download/v1.0/ZodiIDE.exe" class="btn" download>Скачать</a>
-                        <a href="https://github.com/finchproffe/ZodiIDE" class="btn" target="_blank">Source</a>
+                        <div data-lyket-type="like" data-lyket-id="zodiide" data-lyket-namespace="finch-releases"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- CloudPlayer -->
             <div class="project-card">
                 <div class="project-header">
                     <div class="project-name">CloudPlayer</div>
@@ -316,24 +336,20 @@
                     Бесплатный плеер для музыки без рекламы и с множеством функций.
                 </div>
                 <div class="project-footer">
+                    <div class="btn-group">
+                        <a href="https://github.com/finchproffe/CloudPlayer/releases/download/v1.0/CloudPlayer.exe" class="btn" download>Скачать</a>
+                        <a href="https://github.com/finchproffe/CloudPlayer" class="btn" target="_blank">Source</a>
+                    </div>
                     <div class="project-stats">
                         <div class="stat-badge" title="Скачивания">
                             <img src="assets/download.svg" alt="Download">
                             <span id="count-cloudplayer">0</span>
                         </div>
-                        <div class="stat-badge like-btn" data-id="cloudplayer" title="Поставить лайк">
-                            <img src="assets/like.svg" alt="Like">
-                            <span id="like-count-cloudplayer">0</span>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <a href="https://github.com/finchproffe/CloudPlayer/releases/download/v1.0/CloudPlayer.exe" class="btn" download>Скачать</a>
-                        <a href="https://github.com/finchproffe/CloudPlayer" class="btn" target="_blank">Source</a>
+                        <div data-lyket-type="like" data-lyket-id="cloudplayer" data-lyket-namespace="finch-releases"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Synced -->
             <div class="project-card">
                 <div class="project-header">
                     <div class="project-name">Synced</div>
@@ -342,19 +358,16 @@
                     Утилита для быстрой передачи файлов между устройствами по локальной сети.
                 </div>
                 <div class="project-footer">
+                    <div class="btn-group">
+                        <a href="https://github.com/finchproffe/Synced/releases/download/v1.0/Synced-LAN.exe" class="btn" download>Скачать</a>
+                        <a href="https://github.com/finchproffe/Synced" class="btn" target="_blank">Source</a>
+                    </div>
                     <div class="project-stats">
                         <div class="stat-badge" title="Скачивания">
                             <img src="assets/download.svg" alt="Download">
                             <span id="count-synced">0</span>
                         </div>
-                        <div class="stat-badge like-btn" data-id="synced" title="Поставить лайк">
-                            <img src="assets/like.svg" alt="Like">
-                            <span id="like-count-synced">0</span>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <a href="https://github.com/finchproffe/Synced/releases/download/v1.0/Synced-LAN.exe" class="btn" download>Скачать</a>
-                        <a href="https://github.com/finchproffe/Synced" class="btn" target="_blank">Source</a>
+                        <div data-lyket-type="like" data-lyket-id="synced" data-lyket-namespace="finch-releases"></div>
                     </div>
                 </div>
             </div>
@@ -369,11 +382,10 @@
     <script defer src="assets/js/gsap.min.js"></script>
     <script defer src="assets/js/ScrollTrigger.min.js"></script>
     <script defer src="assets/js/lenis.min.js"></script>
+    
+    <script src="https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=pt_fcd7d9096509e10135486d34b41bfb"></script>
 
     <script>
-        const LYKET_API_KEY = "pt_fcd7d9096509e10135486d34b41bfb";
-        const LYKET_NAMESPACE = "finch-releases";
-
         window.addEventListener('DOMContentLoaded', () => {
             if (typeof Lenis !== 'undefined') {
                 const lenis = new Lenis();
@@ -385,19 +397,19 @@
             }
             
             getGitHubDownloads();
-            loadLyketLikes();
-            setupLikeButtons();
         });
 
-        // 1. Сбор скачиваний с GitHub
         async function getGitHubDownloads() {
             const repos = ['Auto-Typer-Python', 'FinchScaler', 'ZodiIDE', 'CloudPlayer', 'Synced'];
+            
             for (const repo of repos) {
                 try {
                     const response = await fetch(`https://api.github.com/repos/finchproffe/${repo}/releases`);
                     if (!response.ok) continue;
+                    
                     const releases = await response.json();
                     let totalDownloads = 0;
+                    
                     if (releases && releases.length > 0) {
                         releases.forEach(release => {
                             if (release.assets) {
@@ -407,64 +419,15 @@
                             }
                         });
                     }
-                    const element = document.getElementById(`count-${repo.toLowerCase()}`);
-                    if (element) element.innerText = totalDownloads;
-                } catch (e) {
-                    console.error(e);
-                }
-            }
-        }
-
-        // 2. Загрузка текущего количества лайков с Lyket при старте страницы
-        async function loadLyketLikes() {
-            const buttons = document.querySelectorAll('.like-btn');
-            for (const btn of buttons) {
-                const id = btn.getAttribute('data-id');
-                try {
-                    const response = await fetch(`https://api.lyket.dev/v1/like-buttons/${LYKET_NAMESPACE}/${id}?api_key=${LYKET_API_KEY}`);
-                    if (response.ok) {
-                        const data = await response.json();
-                        const countSpan = document.getElementById(`like-count-${id}`);
-                        if (countSpan && data.data && data.data.attributes) {
-                            countSpan.innerText = data.data.attributes.user_likes_count || 0;
-                        }
-                    }
-                } catch (e) {
-                    console.error(e);
-                }
-            }
-        }
-
-        // 3. Обработка клика по кнопке лайка (отправка POST-запроса на Lyket)
-        function setupLikeButtons() {
-            document.querySelectorAll('.like-btn').forEach(btn => {
-                btn.addEventListener('click', async () => {
-                    const id = btn.getAttribute('data-id');
-                    const countSpan = document.getElementById(`like-count-${id}`);
                     
-                    // Визуально увеличиваем сразу для отзывчивости интерфейса
-                    let currentLikes = parseInt(countSpan.innerText) || 0;
-                    countSpan.innerText = currentLikes + 1;
-
-                    try {
-                        const response = await fetch(`https://api.lyket.dev/v1/like-buttons/${LYKET_NAMESPACE}/${id}/press?api_key=${LYKET_API_KEY}`, {
-                            method: 'POST'
-                        });
-                        if (response.ok) {
-                            const data = await response.json();
-                            if (data.data && data.data.attributes) {
-                                countSpan.innerText = data.data.attributes.user_likes_count;
-                            }
-                        } else {
-                            // Если сервер отклонил (например, уже лайкал), возвращаем старое значение
-                            countSpan.innerText = currentLikes;
-                        }
-                    } catch (e) {
-                        countSpan.innerText = currentLikes;
-                        console.error(e);
+                    const element = document.getElementById(`count-${repo.toLowerCase()}`);
+                    if (element) {
+                        element.innerText = totalDownloads;
                     }
-                });
-            });
+                } catch (error) {
+                    console.error(error);
+                }
+            }
         }
     </script>
 </body>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finch Releases</title>
+    
+    <style>
+        /* Подключаем твои локальные шрифты */
+        @font-face {
+            font-family: 'Excon';
+            src: url('assets/fonts/Excon-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Excon';
+            src: url('assets/fonts/Excon-Black.woff2') format('woff2');
+            font-weight: 900;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Satoshi';
+            src: url('assets/fonts/Satoshi-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Satoshi';
+            src: url('assets/fonts/Satoshi-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        :root {
+            --bg-color: #121214;      /* Строгий темно-серый фон */
+            --card-bg: #1a1a1e;       /* Чуть светлее для карточек */
+            --border-color: #2a2a30;  /* Границы */
+            --text-main: #f0f0f2;     /* Почти белый text */
+            --text-muted: #8e8e93;    /* Серый текст для описаний */
+            --btn-bg: #2d2d34;        /* Обычные кнопки */
+            --btn-hover: #3a3a42;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 400;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        header {
+            max-width: 800px;
+            margin: 80px auto 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Excon', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto 100px auto;
+            padding: 0 20px;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .project-card:hover {
+            border-color: #44444a;
+            transform: translateY(-2px);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .project-name {
+            font-family: 'Excon', sans-serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 24px;
+            max-width: 600px;
+        }
+
+        /* Обычные минималистичные кнопки */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--btn-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--btn-hover);
+            border-color: #44444a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Finch Releases</h1>
+        <p>Каталог Open-Source программ от finchproffe</p>
+    </header>
+
+    <div class="container">
+        <div class="project-list">
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-name">AutoTyper</div>
+                </div>
+                <div class="project-desc">
+                    Утилита для автоматизации ввода текста в поле ввода.
+                </div>
+                <div class="btn-group">
+                    <a href="programs/AutoTyper.exe" class="btn" download>Скачать</a>
+                    <a href="#" class="btn" target="_blank">Source</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-name">FinchScaler</div>
+                </div>
+                <div class="project-desc">
+                    Инструмент для апскейлинга изображений в стиле anime.
+                </div>
+                <div class="btn-group">
+                    <a href="programs/FinchScaler.exe" class="btn" download>Скачать</a>
+                    <a href="#" class="btn" target="_blank">Source</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-name">Zodi IDE</div>
+                </div>
+                <div class="project-desc">
+                    Кастомная легкая IDE для разработки python-приложений со встроенным отладчиком и компилятором.
+                </div>
+                <div class="btn-group">
+                    <a href="programs/ZodiIDE.exe" class="btn" download>Скачать</a>
+                    <a href="#" class="btn" target="_blank">Source</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-name">CloudPlayer</div>
+                </div>
+                <div class="project-desc">
+                    Бесплатный плеер для музыки без рекламы и с множеством функций.
+                </div>
+                <div class="btn-group">
+                    <a href="programs/CloudPlayer.exe" class="btn" download>Скачать</a>
+                    <a href="#" class="btn" target="_blank">Source</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-name">Synced</div>
+                </div>
+                <div class="project-desc">
+                    Утилита для быстрой передачи файлов между устройствами по локальной сети.
+                </div>
+                <div class="btn-group">
+                    <a href="programs/Synced.exe" class="btn" download>Скачать</a>
+                    <a href="#" class="btn" target="_blank">Source</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026. Все права защищены.
+    </footer>
+
+    <script defer src="assets/js/gsap.min.js"></script>
+    <script defer src="assets/js/ScrollTrigger.min.js"></script>
+    <script defer src="assets/js/lenis.min.js"></script>
+    
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof Lenis !== 'undefined') {
+                const lenis = new Lenis();
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                requestAnimationFrame(raf);
+            }
+        });
+    </script>
+</body>
+</html>
